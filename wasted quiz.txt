@@ -1,0 +1,42 @@
+True / False
+
+				/--------------cheat code---------------\
+				|01 02 03 04 05 06 07 08 09 10 11   |
+				|0   1   1   1   1   0   1   1   1   1   1     |
+				|	     2014		      |
+				•-----------------------------------------•
+
+----------------------------------------------------------------------Questions------------------------------------------------------------------------------------
+
+Q01• The value of the ratio of absolute permitivity of free space over absolute permeability of free space is greater than zero.
+
+Q02• Entropy in time is an increasing function for an isolated system.
+
+Q03• A pair of Chiral compounds are mirror images of each other, but cannot be superimposed.
+
+Q04• It is possible to extract multiple returned values from a function in C language.
+
+Q05• The value of hyperbolic sine of (ix), is equal to i*sine of x.
+Sinh(ix)=Sin(x)
+Where, i*i=-1
+
+Q06• The expression for escape velocity for a planet required to escape it's orbit is equal to under root 2gM/r,
+      where
+      M=Mass of the planet,
+      r=Sepration of the center of gravities of the object and the planet.
+      g=Acceleration of the object.
+
+Q07• The span of the San andreas fault is over 1300 km.
+
+Q08• It is possible to construct an algorithm of O(rootN) complexity.
+
+Q09• When a graph is plotted between angle of incidence and angle of divergence for a glass prism, the resulting figure is a parabola.
+
+Q10• The estimated number of primes under a number x is, x over natural log of x.
+
+Q11• The correct response for this statement is true.
+
+----------------------------------------------------------------------X----------------------------------------------------------------------------------------------
+Q01• The Reynold's number for a turbulant flow is greater than 2000.
+Poisson ratio
+----------------------------------------------------------------------X----------------------------------------------------------------------------------------------
