@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz-prototype</title>
+<link rel="icon" href="C:/Users/Abbas/Desktop/temp/quiz tamheed/q.png">
+<script LANGUAGE="JavaScript">
+<!-- hide this script tag's contents from old browsers --->
+function jumpBox(list) {
+   location.href = list.options[list.selectedIndex].value
+   }
+function init() 
+              {
+              questions = new Array()
+              questions[1] = "1"
+              questions[2] = "2"
+              questions[3] = "3"
+              questions[4] = "4"
+              questions[5] = "5"
+              questions[6] = "6"
+              questions[7] = "7"
+              questions[8] = "8"
+              questions[9] = "9"
+              questions[10] = "A"
+              questions[11] = "B"
+
+              rightAns = new Array
+              rightAns[1] = "0"
+              rightAns[2] = "1"
+              rightAns[3] = "1"
+              rightAns[4] = "1"
+              rightAns[5] = "1"
+              rightAns[6] = "0"
+              rightAns[7] = "1"
+              rightAns[8] = "1"
+              rightAns[9] = "1"
+              rightAns[10] = "1"
+              rightAns[11] = "1"
+			  
+              } 
+
+function nextQuestion(form)
+
+//set the total number of questions equal to quizend
+
+{   var quizEnd = eval(11 * 1);
+
+    if(form.questNo.value == quizEnd) {
+
+       form.question.value = "";
+
+       form.choiceA.value = "";
+
+       form.choiceB.value = "";
+
+       form.yourChoice.value = "";
+
+       form.results.value = "End of Quiz.  Your final results are listed below."; } else {
+
+    if(form.questNo.value == "") {form.questNo.value = 1} else {
+    
+       form.questNo.value = eval(form.questNo.value) + 1;
+
+    }
+
+    form.question.value = questions[form.questNo.value];
+
+    form.choiceA.value = answerA[form.questNo.value];
+
+    form.choiceB.value = answerB[form.questNo.value];
+
+    form.yourChoice.value = "";
+
+    form.results.value = "";
+
+    if(form.myScore.value == "") {form.myScore.value = 0; } else {
+                                                  form.myScore.value = form.myScore.value; }
+   }
+}
+   function checkAnswer(form) {
+      
+      var myScore = 0;
+      var curve = 0;
+
+      if(form.results.value != "") {form.results.value = "Sorry, no guessing allowed.  In order to retry this question you will have to start the quiz over.  Click on ''Next Question'' to continue."; }
+
+      else if(form.yourChoice.value == rightAns[form.questNo.value]) {
+      form.myScore.value = eval(form.myScore.value) + eval(1);
+      form.results.value = "Conratulations!  You are correct. That brings your cumulative score to " + form.myScore.value + " out of a possible " + form.questNo.value + ".  Click on ''Next Question'' to continue."; } else {
+      
+      form.results.value = "Sorry, you are incorrect. This brings your cumulative score to " + form.myScore.value + " out of a possible " + form.questNo.value + ".  Click on ''Next Question'' to continue." }
+
+   
+   curve = form.myScore.value / form.questNo.value;
+
+   form.percent.value = parseInt(curve * 100,10);
+   
+   if(curve > .90) {form.grade.value = "A"; } else if(curve > .80) {form.grade.value = "B"; } else if(curve > .70) {form.grade.value = "C"; } else if(curve > .60) {form.grade.value = "D"; } else {form.grade.value = "F"; }
+    }
+function clearForm(form)
+{
+    form.questNo.value = "";
+    form.question.value = "";
+    form.choiceA.value = "";
+    form.choiceB.value = "";
+    form.yourChoice.value = "";
+    form.results.value = "";
+    form.myScore.value = "";
+    form.percent.value = "";
+    form.grade.value = "";
+}
+<!-- done hiding from old browsers -->
+</script>
+</head>
+<body onLoad="init()">
+<form method="POST">
+  <div align="center"><center><table BORDER="1">
+    <tr>
+      <td COLSPAN="2" BGCOLOR="#004C4C"><div align="center"><center><p><font SIZE="+3"
+      COLOR="#FFFFFF">Self-Grading Quiz </font></td>
+    </tr>
+    <tr>
+      <td COLSPAN="2" BGCOLOR="#004C40"><div><p><font COLOR="#FFFFFF">Click on &quot;Next
+      Question&quot; to start quiz. Be sure to use small letters (no caps) when entering your
+      letter choice. Also, in order to get credit for each right answer, be sure to click on
+      &quot;Check Current Answer&quot; before going on to the next question.</font> </td>
+    </tr>
+    <tr>
+      <td><b>Question&nbsp;#:</b></td>
+      <td><input TYPE="TEXT" NAME="questNo" SIZE="4"></td>
+    </tr>
+    <tr>
+      <td><b>Question:</b></td>
+      <td><div><center><p><textarea COLS="70" ROWS="2" name="question"
+      wrap="virtual"></textarea></td>
+    </tr>
+    <tr>
+      <td ALIGN="RIGHT"><b>a)</b></td>
+      <td><div align="center"><center><p><input TYPE="TEXT" NAME="choiceA" SIZE="75"></td>
+    </tr>
+    <tr>
+      <td ALIGN="RIGHT"><b>b)</b></td>
+      <td><div align="center"><center><p><input TYPE="TEXT" NAME="choiceB" SIZE="75"></td>
+    </tr>
+    <tr>
+      <td ALIGN="RIGHT"><b>Your choice:</b></td>
+      <td><input TYPE="TEXT" NAME="yourChoice" SIZE="4"></td>
+    </tr>
+    <tr>
+      <td COLSPAN="2"><div align="center"><center><p><input TYPE="button"
+      VALUE="Check Current Answer" onClick="checkAnswer(this.form)"><input TYPE="button"
+      VALUE="Next Question" onClick="nextQuestion(this.form)"> <input TYPE="reset"
+      VALUE="Start Over" onClick="clearForm(this.form)"></td>
+    </tr>
+    <tr>
+      <td ALIGN="RIGHT"><b>Results:</b></td>
+      <td><div align="center"><center><p><textarea COLS="70" ROWS="3" name="results"
+      wrap="virtual"></textarea></td>
+    </tr>
+    <tr>
+      <td ALIGN="RIGHT"><b>Current Score:</b></td>
+      <td><b>Points:</b><input TYPE="TEXT" NAME="myScore" SIZE="4">&nbsp;&nbsp;<b>Percentage:</b><input
+
+      TYPE="TEXT" NAME="percent" SIZE="6">&nbsp;&nbsp;<b>Letter Grade:</b><input TYPE="TEXT"
+      NAME="grade" SIZE="6"></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+
+</body>
+</html>

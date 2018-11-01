@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="theme-color" content="#000">
+	<link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+div#test{
+	border:#000 1px solid;
+	padding:10px 20px 20px 20px;
+	width:90%
+}
+body {
+	zoom: 85%;
+	font-family: sans-serif;
+	font-weight: normal;
+	margin: 10px;
+	color: #999;
+	background-color: #eee;
+}
+
+form {
+	margin: 40px 0;
+}
+
+div {
+	clear: both;
+	margin: 0 50px;
+}
+
+label {
+  width: 200px;
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4
+}
+
+/* hide input */
+input.radio:empty {
+	margin-left: -999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+	position: relative;
+	float: left;
+	line-height: 2.5em;
+	text-indent: 3.25em;
+	margin-top: 2em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #C2C2C2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+	color: #888;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #9CE2AE;
+	background-color: #4DCB6D;
+}
+
+.btn {
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  margin-left:50px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 20px;
+  background: #4DCB6D;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+input.radio:checked ~ label {
+	color: #777;
+}
+h2 {
+	color: #000;
+}
+
+a.rtk:link {color:silver;}
+a.rtk:visited {color:#0000ff;}
+a.rtk:hover {font-size:200%; color:blue; font-family:Times;}
+
+a{
+	text-decoration:none;
+}
+
+span{
+	font-family:cursive;
+	color:blue;
+}
+
+/* radio focus */
+input.radio:focus ~ label:before {
+	box-shadow: 0 0 0 3px #999;
+}
+
+</style>
+<script>
+var pos = 0, test, test_status, question, choice, choices, correct = 0;
+var questions = [
+    [ "The value of the ratio of absolute permitivity of free space over absolute permeability of free space is greater than <span>zero</span>.", "0" ],
+	[ "<span>Entropy</span> in time is an increasing function for an isolated system.", "1" ],
+	[ "A pair of <span>Chiral</span> compounds are mirror images of each other, but cannot be superimposed.", "1" ],
+	[ "It is possible to extract multiple returned values from a function in <span>C</span> language.", "1" ],
+	[ "The value of hyperbolic sine of (ix), is equal to i*sine of x. <br>[<span>Sinh(ix)=iSin(x)]</span>], where, i*i=-1", "1" ],
+	[ "The expression for escape velocity for a planet required to escape it's orbit is given as [<span>v&sup2; = 2gM/r</span>] ,<br>where M=Mass of the planet, r=Sepration of the center of gravities of the object and the planet,<br>g=Acceleration of the object.", "0" ],
+	[ "The span of the San andreas fault is over <span>1300</span> km.", "1" ],
+	[ "It is possible to construct an algorithm of <span>O(&#8730;N)</span> complexity.", "1" ],
+	[ "When a graph is plotted between angle of incidence and angle of divergence for a glass prism, the resulting figure is a <span>parabola</span>.", "1" ],
+	[ "The estimated number of primes under a number x is, x over natural log of X.<br>[<span>lim <sub>x->&#8734</sub> X/ln(X) = 1</span>]", "1" ],
+	[ "The correct response for this statement is <span>true</span>.", "1" ]
+];
+function _(x){
+	return document.getElementById(x);
+}
+function renderQuestion(){
+	test = _("test");
+	if(pos >= questions.length){
+		test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+		test.innerHTML +="<br><h3>Hope you enjoyed.</h3><br><pre><a class='rtk' href='q2.html'>Retake Quiz?</a></pre>";
+		_("test_status").innerHTML = "Test Completed";
+		pos = 0;
+		correct = 0;
+		return false;
+	}
+	_("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+	question = questions[pos][0];
+	test.innerHTML = "<h3>"+question+"</h3>";
+	test.innerHTML += "<div><input type='radio' name='choices' id='radio1' value='1' class='radio' /><label for='radio1'>True</label></div><br>";
+	test.innerHTML += "<div><input type='radio' name='choices' id='radio2' value='0' class='radio' /><label for='radio2'>False</label></div><br><br><br><br><br>";
+	test.innerHTML += "<button onclick='checkAnswer()' class='btn'>Submit Answer</button>";
+}
+function checkAnswer(){
+	choices = document.getElementsByName("choices");
+	for(var i=0; i<choices.length; i++){
+		if(choices[i].checked){
+			choice = choices[i].value;
+			if(choice == questions[pos][1]){
+				correct++;
+				$.ajax({
+					url: '/beep',
+					data: choice,
+					type: 'POST',
+					success: function(response) {
+						console.log(choice);
+					}
+				});
+			}
+		}
+	}
+	pos++;
+	renderQuestion();
+}
+window.addEventListener("load", renderQuestion, false);
+</script>
+</head>
+<body>
+<br><br><br><br><br><br>
+<div class="container">
+	<h2 id="test_status"></h2>
+	<div id="test"></div>
+	<br><br><br><br><br>
+</div>
+</body>
+</html>

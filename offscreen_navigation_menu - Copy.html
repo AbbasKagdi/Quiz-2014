@@ -1,0 +1,178 @@
+<html>
+<meta charset="UTF-8">
+<link rel="icon" href="C:/Users/Abbas/Desktop/temp/quiz tamheed/q2.png">
+<title>Quiz</title>
+<style>
+
+/* Navigation Menu - Background */
+.navigation {
+  /* critical sizing and position styles */
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  
+  /* non-critical appearance styles */
+  list-style: none;
+  background: #111;
+}
+
+/* Navigation Menu - List items */
+.nav-item {
+  /* non-critical appearance styles */
+  width: 300px;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #000;
+}
+
+.nav-item a {
+  /* non-critical appearance styles */
+  display: block;
+  padding: 1em;
+  background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  transition: color 0.2s, background 0.5s;
+}
+
+.nav-item a:hover {
+  color: #c74438;
+  background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(75,20,20,0.65) 100%);
+}
+
+/* Site Wrapper - Everything that isn't navigation */
+.site-wrap {
+  /* Critical position and size styles */
+  min-height: 100%;
+  min-width: 100%;
+  background-color: white; /* Needs a background or else the nav will show through */
+  position: relative;
+  top: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 1;
+  
+  /* non-critical apperance styles */
+  padding: 4em;
+  background:url("C:/Users/Abbas/Desktop//temp/quiz tamheed/liquid.png");
+  background-position: center center;
+  background-size:cover;
+  /*background-image: linear-gradient(135deg, rgb(254,255,255) 0%,rgb(221,241,249) 35%,rgb(160,216,239) 100%);*/
+}
+
+/* Nav Trigger */
+.nav-trigger {
+  /* critical styles - hide the checkbox input */
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+label[for="nav-trigger"] {
+  /* critical positioning styles */
+  position: fixed;
+  left: 15px; top: 15px;
+  z-index: 2;
+  
+  /* non-critical apperance styles */
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
+  background-size: contain;
+}
+
+/* Make the Magic Happen */
+.nav-trigger + label, .site-wrap {
+  transition: left 0.2s;
+}
+
+.nav-trigger:checked + label {
+  left: 245px;
+}
+
+.nav-trigger:checked ~ .site-wrap {
+  left: 230px;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
+}
+
+body {
+	/* Without this, the body has excess horizontal scroll when the menu is open */
+  overflow-x: hidden;
+  zoom:90%
+}
+
+/* Additional non-critical styles */
+
+h1, h3, p {
+  max-width: 600px;
+  margin: 0 auto 1em;
+}
+
+code {
+	padding: 2px;
+	background: #ddd;
+}
+
+/* Micro reset */
+*,*:before,*:after {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	margin:0;padding:0;
+}
+html, body { 
+	font-family:Helvetica, Arial, sans-serif;
+}
+
+iframe{
+	border:5px solid black;
+	margin-left:60px;
+	margin-top:55px;
+	width:85%;
+	height:27em;
+	position:fixed;
+}
+
+#footer{
+    position:fixed;
+    bottom:0px;
+    height:30px;
+	color:#999;
+	margin-left:1%;
+	font-size:90%;
+}
+
+hr.rule {
+    border: 0;
+    height: 1px;
+    background: black;
+    background-image: -webkit-linear-gradient(left, red, black, blue);
+    background-image:    -moz-linear-gradient(left, red, black, blue);
+    background-image:     -ms-linear-gradient(left, red, black, blue);
+    background-image:      -o-linear-gradient(left, red, black, blue);
+}
+</style>
+<body>
+<ul class="navigation">
+	<li class="nav-item"><a href="#">Score Board</a></li>
+	<li class="nav-item"><a href='href="C:/Users/Abbas/Desktop/temp/quiz tamheed/offscreen_navigation_menu - Copy.html"'>Retake quiz</a></li>
+	<li class="nav-item"><a href="#">Change background</a></li>
+	<li class="nav-item"><a href="#">Special</a></li>
+	<li class="nav-item"><a href="href='JavaScript:window.close()'">Quit</a></li>
+</ul>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div class="site-wrap">
+	<iframe name="myif" src="C:/Users/Abbas/Desktop/temp/quiz tamheed/q2.html"></iframe>
+</div>
+<div id="footer"><h4>abkagdibas@gmail.com</h4><hr class="rule"></div>
+
+</body>
+</html>

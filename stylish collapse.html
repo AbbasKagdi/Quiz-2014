@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2015 by Conlinism (http://codepen.io/conlin/pen/rIxEa)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>CodePen - A Pen by  Conlinism</title>
+
+  <style>
+  * {
+  box-sizing:border-box;
+}
+
+body {
+  background:#f2f2f2;
+  color:#444;
+  font-family:sans-serif;
+  widht:100%;
+}
+
+.main {
+  position:absolute;
+  top:0;
+  left:0;
+  transition:left .5s;
+  width:100%;
+  background:#f2f2f2;
+  padding:2%;
+}
+
+.sidebar {
+  position:fixed;
+  right:0;
+  top:0;
+  height:100%;
+  background:#444;
+  width:200px;
+  z-index:-1;
+  padding:5% 0;
+}
+
+.menu {
+  font-size:20px;
+  position:fixed;
+  right:2%;
+  z-index:1;
+  transition:color .5s;
+}
+
+.sidebar a {
+  display:inline-block;
+  width:100%;
+  height:40px;
+  line-height:40px;
+  color:#fff;
+  text-align:center;
+}
+
+.sidebar a:hover {
+  background:#fff;
+  color:#444;
+}
+
+.menu:before {
+  display:inline-block;
+  content:'\2716';
+  transform:rotate(45deg);
+  transition:transform .5s;
+}
+
+#navToggle {
+  display:none;
+}
+
+#navToggle:checked ~ .main{
+  left:-200px;
+}
+
+#navToggle:checked ~ .menu {
+  color:#fff;
+}
+
+#navToggle:checked ~ .menu:before {
+  transform:rotate(0deg);
+}
+  </style>
+
+  <script>
+    window.console = window.console || function(t) {};
+    window.open = function(){ console.log('window.open is disabled.'); };
+    window.print = function(){ console.log('window.print is disabled.'); };
+    // Support hover state for mobile.
+    if (false) {
+      window.ontouchstart = function(){};
+    }
+  </script>
+
+    <script src="//assets.codepen.io/assets/libs/prefixfree.min-de773054e90c52a3c2631c944681b64e.js">"></script>
+
+</head>
+
+<body>
+
+  <input type='checkbox' id='navToggle'/><label for='navToggle' class='menu'> Menu</label>
+<div class='main'>
+  <h1>I'm Batman</h1>I told you I was immortal. Oh there are many forms of immortality.<br><br>You fight like a younger man, there's nothing held back. It's admirable, but mistaken.<br><br>If you're good at something, never do it for free.<br><br>Ah yes! I was wondering what would weight first. Your spirit... or your body?<br><br>I had a vision of a world without Batman. The Mob ground out a little profit and the police tried to shut them down one block at a time. And it was so boring. I've had a change of heart. I don't want Mr Reese spoiling everything but why should I have all the fun? Let's give someone else a chance. If Coleman Reese isn't dead in 60 minutes then I blow up a hospital.<br><br>It's not who I am underneath but what I do that defines me.<br><br>I can't do that as Bruce Wayne... as a man. I'm flesh and blood. I can be ignored, destroyed. But as a symbol, I can be incorruptible, I can be everlasting.<br><br>I'm adaptable.<br><br>I honor my father by finishing his work. Vengeance against the man who killed him is simply a reward for my patience.<br><br>Someone like you. Someone who'll rattle the cages.<br><br>When a forest grows too wild, a purging fire is inevitable and natural. Tomorrow the world will watch in horror as its greatest city destroys itself. The movement back to harmony will be unstoppable this time.<br><br>I'm not wearing hockey pads.<br><br>I got another another job. Your.<br><br>This town deserves a better class of criminal and I'm gonna give it to them. Tell your men they work for me now. This is my city.<br><br>Now choice is yours: exile or death?<br><br>Let me get this straight. You think that your client, one of the wealthiest, most powerful men in the world is secretly a vigilante who spends his nights beating criminals to a pulp with his bare hands and your plan is to blackmail this person? Good luck.<br><br>Or perhaps he's wondering why someone would shoot a m...
+</div>
+<div class='sidebar'>
+  <a href='#'>Link 1</a>
+  <a href='#'>Link 2</a>
+  <a href='#'>Link 3</a>
+  <a href='#'>Link 4</a>
+  <a href='#'>Link 5</a>
+  <a href='#'>Link 6</a>
+  <a href='#'>Link 7</a>
+</div>
+
+  <script src='//assets.codepen.io/assets/libs/fullpage/jquery-c152c51c4dda93382a3ae51e8a5ea45d.js'></script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>
+/*window.onload=function() {
+
+ var x = document.getElementById("x");
+ x.setAttribute("style","display: block");
+ x.onclick=expandOrShrink;
+ x.onkeypress=expandOrShrink;
+}
+
+function expandOrShrink() {
+   if (this.getAttribute("data-expand") == "true") {
+      document.getElementById("sidebar").setAttribute("style",
+             "width: 50px");
+      document.getElementById("main").setAttribute("style",
+             "width: 700px");
+      this.setAttribute("data-expand", "false");
+   } else {
+      document.getElementById("sidebar").setAttribute("style",
+              "width: 240px");
+      document.getElementById("main").setAttribute("style",
+              "width: 500px");
+      this.setAttribute("data-expand", "true");
+   }
+}*\

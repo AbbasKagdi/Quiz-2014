@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Sliding Sidebar</title>  
+  
+  <meta charset=utf-8 />
+  
+  <script type="text/javascript" src="C:\Users\Abbas\Desktop\temp\quiz tamheed\ja.js"></script>
+
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      // Variables
+      var objMain = $('#wrap'), objSidebar = $('#sidebar');
+      
+      // Show sidebar
+      function showSidebar(){
+          objMain.removeClass('nosidebar');
+          objMain.addClass('sidebar');
+          objSidebar.animate({ 'right' : '0'},'slow');
+          $.cookie('sidebar-pref2', 'use-sidebar', { expires: 30 });
+      }
+   
+      // Hide sidebar
+      function hideSidebar(){
+          objMain.removeClass('sidebar');
+          objMain.addClass('nosidebar');
+          objSidebar.animate({ 'right' : '-254px'},'slow');
+          $.cookie('sidebar-pref2', null, { expires: 30 });
+      }
+   
+      // Sidebar separator
+      var objSeparator = $('#toggleBtn');
+   
+      objSeparator.click(function(e){
+          e.preventDefault();
+          if ( objMain.hasClass('sidebar') ){
+              hideSidebar();
+          }
+          else {
+              showSidebar();
+          }
+      });
+   
+      // Load preference
+      if ( $.cookie('sidebar-pref2') == null ){
+          objMain.removeClass('sidebar');
+      }
+    });
+  </script>  
+ 
+    
+    
+    
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+  
+  #wrap { border: solid 1px #ccc; width: 960px; margin: 0 auto; overflow: hidden; margin-bottom: 20px; position: relative; }
+  #wrap #sidebar { width: 220px; position: absolute; top: 0; }
+  
+  #wrap.sidebar #sidebar { right: 0px; }
+  #wrap.sidebar #mainContent, #wrap.sidebar #sidebar {margin: 10px; padding: 10px; box-shadow: 0px 0px 4px #888; }
+  #wrap.sidebar #mainContent { margin-right: 270px; }
+  
+  .nosidebar #mainContent, #wrap #sidebar {margin: 10px; padding: 10px; box-shadow: 0px 0px 4px #888; }
+  #wrap.nosidebar #sidebar { right: -254px; }
+  
+  
+  #sidebar #toggleBtn { width: 15px; height: 30px; line-height: 30px; background: #ccc; cursor: pointer; position: absolute; top: 5px; left: -15px; text-align: center; border-radius: 5px 0 0 5px; }
+  #sidebar #toggleBtn:hover { background: #666; color: #fff; }
+  
+  
+</style>
+  
+</head>
+<body>
+
+  <div id="wrap" class="sidebar">
+    
+    
+    <div id="mainContent">
+      <h2>Sidebar is Visible</h2>
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus, magna nec auctor porttitor, lorem orci dignissim neque, eu pretium leo justo sollicitudin ipsum. Curabitur dictum nunc eu sem eleifend eu aliquet dolor consequat. In hac habitasse platea dictumst. Integer ac mi enim. Maecenas fringilla, lectus rhoncus consequat mattis, justo purus consequat sem, sed faucibus sem tortor in odio. Nunc tempus cursus erat, eu imperdiet justo vehicula eget. Sed mollis neque at lorem facilisis sit amet facilisis eros tempus.</p>
+
+      <p>Aliquam sit amet massa ac risus dapibus commodo quis nec orci. In tellus erat, facilisis eu tincidunt in, dictum nec quam. Aliquam erat volutpat. Nunc aliquet erat ac purus lacinia lacinia. Nunc accumsan nisi at erat semper euismod. Nunc dignissim blandit justo, at rutrum odio adipiscing et. Etiam ullamcorper ipsum nec leo consectetur volutpat. Vestibulum libero purus, tincidunt vitae ullamcorper auctor, lobortis a nibh. Sed dignissim fringilla augue eget scelerisque. Quisque at dolor in lectus fringilla volutpat nec nec felis. Maecenas porttitor feugiat magna, ac consectetur odio pharetra non. Curabitur hendrerit enim sed eros tempor a auctor elit tempor. Nulla ac enim posuere dolor auctor blandit vel et orci. Aliquam erat volutpat. Aenean dictum lacinia condimentum. Donec eros eros, vestibulum id euismod vitae, ultrices eget dolor.</p>
+      
+      
+    </div> <!-- end mainContent -->
+    
+    <div id="sidebar">
+      <ul>
+		<script>
+			var i;
+			for(i=0;i<5;){
+				document.write("<li>list item "+(++i)+"</li>");
+			}
+		</script>
+      </ul>
+	  <img id="mimg" src="C:\Users\Abbas\Desktop\temp\quiz tamheed\1.jpg" onclick="changeImage()"></img>
+      <span id="toggleBtn"> &rsaquo; </span>
+    </div> <!-- end sidebar -->
+  </div> <!-- end #wrap -->
+</body>
+</html>
